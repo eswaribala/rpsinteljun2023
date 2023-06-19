@@ -13,7 +13,7 @@ namespace InventoryAPI.Controllers
     [Route("api/v{version:apiVersion}/[controller]")]
     [EnableCors]
     //Content negotiation
-    [Produces("application/xml")]
+    //[Produces("application/xml")]
     [ApiController]
     public class CategoriesController : ControllerBase
     {

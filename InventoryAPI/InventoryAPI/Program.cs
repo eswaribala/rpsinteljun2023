@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
+using Newtonsoft.Json.Converters;
+using InventoryAPI.Configurations;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,11 +14,17 @@ ConfigurationManager configuration = builder.Configuration;
 // Add services to the container.
 
 //builder.Services.AddControllers();
+
 builder.Services.AddControllers(options =>
 {
     options.RespectBrowserAcceptHeader = true;
     options.ReturnHttpNotAcceptable = true;
-}).AddXmlSerializerFormatters();
+})
+    .AddNewtonsoftJson(options => options.SerializerSettings.Converters.Add(new StringEnumConverter()))
+    .AddXmlSerializerFormatters()
+    
+.AddMvcOptions(options => options.OutputFormatters.Add(new CsvOutputFormatter()));
+
 builder.Services.AddDbContext<InventoryContext>(options =>
 options.UseSqlServer(configuration.
 GetConnectionString("InvConn")));
