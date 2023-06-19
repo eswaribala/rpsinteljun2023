@@ -15,9 +15,9 @@ namespace InventoryAPI.Models
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:MM dd yyyy}")]
         public DateTime ExpiryDate { get; set; }
-        [Column("Cost",TypeName="bigint")]
+        [Column("Cost")]
         public long Cost { get; set; }
-        [Column("BufferLevel", TypeName = "bigint")]
+        [Column("BufferLevel")]
         public long BufferLevel { get; set; }
 
     }

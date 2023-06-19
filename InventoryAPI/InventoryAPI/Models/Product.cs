@@ -10,14 +10,14 @@ namespace InventoryAPI.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Column("ProductId",TypeName ="bigint")]
+        [Column("ProductId")]
         public long ProductId { get; set; }
-        [Column("ProductName", TypeName = "varchar(200")]
-        public string ProductName { get; set; }=string.Empty;
+        [Column("ProductName")]
+        public string? ProductName { get; set; }
         //value object
         public ProductDescription? productDescription { get; set; }
-        [Column("SKU", TypeName = "varchar(200")]
-        public string SKU { get; set; }= string.Empty;
+        [Column("SKU")]
+        public string? SKU { get; set; }
         [ForeignKey("Category")]
         [Column("Category_Id_FK")]
         public long CategoryId { get; set; }
