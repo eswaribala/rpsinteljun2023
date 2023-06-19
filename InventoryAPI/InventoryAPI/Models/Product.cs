@@ -12,11 +12,11 @@ namespace InventoryAPI.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column("ProductId")]
         public long ProductId { get; set; }
-        [Column("ProductName")]
+        [Column("ProductName", TypeName = "varchar(200)")]
         public string? ProductName { get; set; }
         //value object
         public ProductDescription? productDescription { get; set; }
-        [Column("SKU")]
+        [Column("SKU", TypeName = "varchar(200)")]
         public string? SKU { get; set; }
         [ForeignKey("Category")]
         [Column("Category_Id_FK")]

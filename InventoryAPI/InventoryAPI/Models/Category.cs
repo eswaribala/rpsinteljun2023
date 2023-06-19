@@ -8,9 +8,9 @@ namespace InventoryAPI.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Column("CategoryId")]
+        [Column("CategoryId",TypeName = "bigint")]
         public long CategoryId { get; set; }
-        [Column("CategoryName")]
+        [Column("CategoryName",TypeName = "varchar(200)")]
         public string? CategoryName { get; set; }
     }
 }
