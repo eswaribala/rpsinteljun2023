@@ -25,7 +25,7 @@ namespace InventoryAPI.Controllers
 
         // GET: api/<CategoryController>
         [HttpGet]
-        [MapToApiVersion("2.0")]
+      //  [MapToApiVersion("2.0")]
         public async Task<IEnumerable<Product>> Get()
         {
             return await productRepo.GetProducts();
