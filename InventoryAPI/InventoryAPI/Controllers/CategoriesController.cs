@@ -12,6 +12,8 @@ namespace InventoryAPI.Controllers
     [ApiVersion("2.0")]
     [Route("api/v{version:apiVersion}/[controller]")]
     [EnableCors]
+    //Content negotiation
+    [Produces("application/xml")]
     [ApiController]
     public class CategoriesController : ControllerBase
     {
