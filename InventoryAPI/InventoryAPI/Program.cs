@@ -71,7 +71,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseCors(policyName);
 app.UseAuthorization();
 
 app.MapControllers();
