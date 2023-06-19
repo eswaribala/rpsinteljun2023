@@ -1,4 +1,5 @@
 using InventoryAPI.Contexts;
+using InventoryAPI.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -11,6 +12,8 @@ builder.Services.AddControllers();
 builder.Services.AddDbContext<InventoryContext>(options =>
 options.UseSqlServer(configuration.
 GetConnectionString("InvConn")));
+builder.Services.AddTransient<ICategoryRepo, CategoryRepo>();
+builder.Services.AddTransient<IProductRepo, ProductRepo>(); 
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
