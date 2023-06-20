@@ -11,7 +11,7 @@ namespace InventoryAPI.Controllers
     [ApiVersion("1.1")]
     [ApiVersion("2.0")]
     [Route("api/v{version:apiVersion}/[controller]")]
-    [EnableCors]
+   [EnableCors]
     //Content negotiation
     //[Produces("application/xml")]
     [ApiController]

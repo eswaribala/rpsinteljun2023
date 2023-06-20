@@ -25,7 +25,7 @@ builder.Services.AddControllers(options =>
 })
     .AddNewtonsoftJson(options => options.SerializerSettings.Converters.Add(new StringEnumConverter()))
     .AddXmlSerializerFormatters()
-    
+
 .AddMvcOptions(options => options.OutputFormatters.Add(new CsvOutputFormatter()));
 
 builder.Services.AddDbContext<InventoryContext>(options =>
@@ -37,6 +37,13 @@ builder.Services.AddTransient<IProductRepo, ProductRepo>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+//builder.Services.AddApiVersioning(x =>
+//{
+//    x.DefaultApiVersion = new ApiVersion(1, 0);
+//    x.AssumeDefaultVersionWhenUnspecified = true;
+//    x.ReportApiVersions = true;
+//    x.ApiVersionReader = new HeaderApiVersionReader("x-api-version");
+//});
 builder.Services.AddApiVersioning(opt =>
 {
     opt.DefaultApiVersion = new ApiVersion(1, 0);
@@ -82,6 +89,8 @@ var apiVersionDescriptionProvider = app.Services.GetRequiredService<IApiVersionD
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
+    // app.UseSwaggerUI();
+    app.UseSwagger();
     app.UseSwaggerUI(options =>
     {
         foreach (var description in apiVersionDescriptionProvider.ApiVersionDescriptions)
@@ -91,14 +100,14 @@ if (app.Environment.IsDevelopment())
         }
     });
 }
+app.UseGraphQL<InventorySchema>();
+app.UseGraphQLPlayground(options: new PlaygroundOptions());
 
 app.UseHttpsRedirection();
-app.UseCors(policyName);
+//app.UseCors(policyName);
 app.UseAuthorization();
 
 app.MapControllers();
 app.UseSwagger();
-app.UseGraphQL<InventorySchema>();
-app.UseGraphQLPlayground(options: new PlaygroundOptions());
 
 app.Run();
