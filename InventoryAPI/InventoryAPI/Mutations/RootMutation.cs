@@ -11,7 +11,7 @@ namespace InventoryAPI.Mutations
         private ICategoryRepo _categoryRepo;
         private IProductRepo _productRepo;
 
-        public RootMutation(ICategoryRepo categoryRepo,ProductRepo productRepo)
+        public RootMutation(ICategoryRepo categoryRepo,IProductRepo productRepo)
         {
             this._categoryRepo = categoryRepo;
             this._productRepo = productRepo;

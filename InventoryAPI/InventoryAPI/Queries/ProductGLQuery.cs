@@ -1,4 +1,5 @@
-﻿using GraphQL;
+﻿/*
+using GraphQL;
 using GraphQL.Types;
 using InventoryAPI.Repositories;
 
@@ -27,3 +28,4 @@ namespace InventoryAPI.Queries
         }
     }
 }
+*/
