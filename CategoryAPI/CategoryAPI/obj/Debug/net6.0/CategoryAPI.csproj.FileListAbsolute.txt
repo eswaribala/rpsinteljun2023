@@ -86,3 +86,7 @@ G:\Local disk\IntelJun2023\CategoryAPI\CategoryAPI\obj\Debug\net6.0\refint\Categ
 G:\Local disk\IntelJun2023\CategoryAPI\CategoryAPI\obj\Debug\net6.0\CategoryAPI.pdb
 G:\Local disk\IntelJun2023\CategoryAPI\CategoryAPI\obj\Debug\net6.0\CategoryAPI.genruntimeconfig.cache
 G:\Local disk\IntelJun2023\CategoryAPI\CategoryAPI\obj\Debug\net6.0\ref\CategoryAPI.dll
+G:\Local disk\IntelJun2023\CategoryAPI\CategoryAPI\bin\Debug\net6.0\System.Text.Encodings.Web.dll
+G:\Local disk\IntelJun2023\CategoryAPI\CategoryAPI\bin\Debug\net6.0\System.Text.Json.dll
+G:\Local disk\IntelJun2023\CategoryAPI\CategoryAPI\bin\Debug\net6.0\VaultSharp.dll
+G:\Local disk\IntelJun2023\CategoryAPI\CategoryAPI\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll

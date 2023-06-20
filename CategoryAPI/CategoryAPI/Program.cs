@@ -10,6 +10,7 @@ using CategoryAPI.Configurations;
 using GraphQL.Server;
 using CategoryAPI.Schemas;
 using GraphQL.Server.Ui.Playground;
+using Microsoft.Data.SqlClient;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,9 +29,39 @@ builder.Services.AddControllers(options =>
 
 .AddMvcOptions(options => options.OutputFormatters.Add(new CsvOutputFormatter()));
 
-builder.Services.AddDbContext<CategoryContext>(options =>
-options.UseSqlServer(configuration.
-GetConnectionString("InvConn")));
+// Add services to the container.
+Dictionary<string, Object> data = new VaultConfiguration(configuration)
+    .GetConfiguration().Result;
+//connection string
+SqlConnectionStringBuilder providerCs = new SqlConnectionStringBuilder();
+//reading from Vault server
+providerCs.InitialCatalog = data["dbname4"].ToString();
+providerCs.UserID = data["username"].ToString();
+providerCs.Password = data["password"].ToString();
+//providerCs.DataSource = "DESKTOP-55AGI0I\\MSSQLEXPRESS2022";
+var machineName = data["machinename"];
+var serverName = data["servername"];
+var datasource = machineName + "\\" + serverName;
+providerCs.DataSource = datasource;
+//reading via config server
+//providerCs.DataSource = configuration["servername"];
+
+//providerCs.UserID = CryptoService2.Decrypt(ConfigurationManager.
+//AppSettings["UserId"]);
+providerCs.MultipleActiveResultSets = true;
+providerCs.TrustServerCertificate = true;
+
+builder.Services.AddDbContext<CategoryContext>(o =>
+o.UseSqlServer(providerCs.ToString()));
+
+
+
+
+//builder.Services.AddDbContext<CategoryContext>(options =>
+//options.UseSqlServer(configuration.
+//GetConnectionString("InvConn")));
+
+
 builder.Services.AddTransient<ICategoryRepo, CategoryRepo>();
 
 
