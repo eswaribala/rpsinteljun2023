@@ -7,7 +7,8 @@ namespace InventoryAPI.Mutations
         public CategoryGLInputType() {
 
             Name = "CategoryInput";
-            Field<NonNullGraphType<LongGraphType>>("CategoryId");
+            //Auto Generated
+            //Field<NonNullGraphType<LongGraphType>>("CategoryId");
             Field<NonNullGraphType<StringGraphType>>("CategoryName");
         
         }
