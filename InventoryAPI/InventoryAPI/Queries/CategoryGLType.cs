@@ -7,7 +7,7 @@ namespace InventoryAPI.Queries
     {
         public CategoryGLType()
         {
-            Name = "category";
+            Name = "Category";
             Field(_ => _.CategoryId).Description("Category Id");
             Field(_ => _.CategoryName).Description("Category Name");
         }
