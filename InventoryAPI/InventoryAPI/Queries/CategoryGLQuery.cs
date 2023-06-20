@@ -10,8 +10,7 @@ namespace InventoryAPI.Queries
 
             Name = "Categories";
             Field<ListGraphType<CategoryGLType>>(
-                 "All Categories",
-                 
+                 "All Categories",                 
               resolve: context => categoryRepo.GetCategories()
 
                 ) ;

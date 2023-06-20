@@ -37,7 +37,6 @@
   <ItemGroup>
     <Folder Include="Mutations\" />
     <Folder Include="Schemas\" />
-    <Folder Include="Queries\" />
   </ItemGroup>
 
 </Project>
