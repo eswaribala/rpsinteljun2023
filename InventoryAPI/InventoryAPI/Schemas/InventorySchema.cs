@@ -1,4 +1,5 @@
 ﻿using GraphQL.Types;
+using InventoryAPI.Mutations;
 using InventoryAPI.Queries;
 
 namespace InventoryAPI.Schemas
@@ -8,6 +9,7 @@ namespace InventoryAPI.Schemas
         public InventorySchema(IServiceProvider ServiceProvider)
         {
             Query = ServiceProvider.GetRequiredService<RootQuery>();
+            Mutation = ServiceProvider.GetRequiredService<RootMutation>();
         }
     }
 }
