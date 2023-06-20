@@ -31,7 +31,6 @@ G:\Local disk\IntelJun2023\InventoryAPI\InventoryAPI\obj\Debug\net6.0\InventoryA
 G:\Local disk\IntelJun2023\InventoryAPI\InventoryAPI\obj\Debug\net6.0\InventoryAPI.genruntimeconfig.cache
 G:\Local disk\IntelJun2023\InventoryAPI\InventoryAPI\obj\Debug\net6.0\ref\InventoryAPI.dll
 G:\Local disk\IntelJun2023\InventoryAPI\InventoryAPI\bin\Debug\net6.0\GraphQL.dll
-G:\Local disk\IntelJun2023\InventoryAPI\InventoryAPI\bin\Debug\net6.0\GraphQLParser.dll
 G:\Local disk\IntelJun2023\InventoryAPI\InventoryAPI\bin\Debug\net6.0\GraphQL.DataLoader.dll
 G:\Local disk\IntelJun2023\InventoryAPI\InventoryAPI\bin\Debug\net6.0\GraphQL.NewtonsoftJson.dll
 G:\Local disk\IntelJun2023\InventoryAPI\InventoryAPI\bin\Debug\net6.0\GraphQL.Server.Core.dll
@@ -86,3 +85,4 @@ G:\Local disk\IntelJun2023\InventoryAPI\InventoryAPI\bin\Debug\net6.0\System.Rea
 G:\Local disk\IntelJun2023\InventoryAPI\InventoryAPI\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
 G:\Local disk\IntelJun2023\InventoryAPI\InventoryAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 G:\Local disk\IntelJun2023\InventoryAPI\InventoryAPI\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
+G:\Local disk\IntelJun2023\InventoryAPI\InventoryAPI\bin\Debug\net6.0\GraphQL-Parser.dll

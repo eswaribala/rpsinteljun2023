@@ -1,24 +1,26 @@
-﻿using GraphQL;
+﻿/*
+using GraphQL;
 using GraphQL.Types;
-using InventoryAPI.Queries;
 using InventoryAPI.Repositories;
 
-namespace InventoryAPI.Models
+namespace InventoryAPI.Queries
 {
-    public class ProductGLQuery:ObjectGraphType
+    public class ProductGLQuery : ObjectGraphType
     {
-        public ProductGLQuery(IProductRepo productRepo) {
+        public ProductGLQuery(IProductRepo productRepo)
+        {
             Name = "Products";
             Field<ListGraphType<ProductGLType>>(
-                "All Products",
+                "AllProducts",
                 resolve: context => productRepo.GetProducts()
                 );
             Field<ProductGLType>(
-                "Product ById",
+                "ProductById",
                  arguments: new QueryArguments(new QueryArgument<LongGraphType>
                  { Name = "productId" }),
                  resolve: context => productRepo.GetProductById(context.GetArgument<long>("productId"))
-                ) ;
+                );
         }
     }
 }
+*/

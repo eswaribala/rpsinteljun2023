@@ -2,33 +2,34 @@
   "version": 3,
   "targets": {
     "net6.0": {
-      "GraphQL/5.1.0": {
+      "GraphQL/4.6.1": {
         "type": "package",
         "dependencies": {
-          "GraphQL-Parser": "8.0.0",
+          "GraphQL-Parser": "7.2.0",
           "Microsoft.CSharp": "4.7.0",
-          "System.ComponentModel.Annotations": "4.7.0"
+          "System.ComponentModel.Annotations": "4.7.0",
+          "System.Runtime.CompilerServices.Unsafe": "4.7.1"
         },
         "compile": {
-          "lib/net6.0/GraphQL.dll": {
+          "lib/netstandard2.1/GraphQL.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net6.0/GraphQL.dll": {
+          "lib/netstandard2.1/GraphQL.dll": {
             "related": ".xml"
           }
         }
       },
-      "GraphQL-Parser/8.0.0": {
+      "GraphQL-Parser/7.2.0": {
         "type": "package",
         "compile": {
-          "lib/net6.0/GraphQLParser.dll": {
+          "lib/netstandard2.1/GraphQL-Parser.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net6.0/GraphQLParser.dll": {
+          "lib/netstandard2.1/GraphQL-Parser.dll": {
             "related": ".xml"
           }
         }
@@ -67,11 +68,11 @@
           }
         }
       },
-      "GraphQL.Server.Core/5.1.0": {
+      "GraphQL.Server.Core/5.0.2": {
         "type": "package",
         "dependencies": {
+          "GraphQL": "4.1.0",
           "GraphQL.DataLoader": "4.1.0",
-          "GraphQL.SystemReactive": "4.1.0",
           "Microsoft.Extensions.Options": "3.1.0"
         },
         "compile": {
@@ -85,10 +86,10 @@
           }
         }
       },
-      "GraphQL.Server.Transports.AspNetCore/5.1.0": {
+      "GraphQL.Server.Transports.AspNetCore/5.0.2": {
         "type": "package",
         "dependencies": {
-          "GraphQL.Server.Core": "5.1.0",
+          "GraphQL.Server.Core": "5.0.2",
           "Microsoft.Extensions.Options": "5.0.0"
         },
         "compile": {
@@ -105,11 +106,11 @@
           "Microsoft.AspNetCore.App"
         ]
       },
-      "GraphQL.Server.Transports.AspNetCore.SystemTextJson/5.1.0": {
+      "GraphQL.Server.Transports.AspNetCore.SystemTextJson/5.0.2": {
         "type": "package",
         "dependencies": {
-          "GraphQL.Server.Transports.AspNetCore": "5.1.0",
-          "GraphQL.Server.Transports.Subscriptions.Abstractions": "5.1.0",
+          "GraphQL.Server.Transports.AspNetCore": "5.0.2",
+          "GraphQL.Server.Transports.Subscriptions.Abstractions": "5.0.2",
           "GraphQL.SystemTextJson": "4.1.0",
           "System.IO.Pipelines": "5.0.1"
         },
@@ -127,11 +128,11 @@
           "Microsoft.AspNetCore.App"
         ]
       },
-      "GraphQL.Server.Transports.Subscriptions.Abstractions/5.1.0": {
+      "GraphQL.Server.Transports.Subscriptions.Abstractions/5.0.2": {
         "type": "package",
         "dependencies": {
           "GraphQL.NewtonsoftJson": "4.1.0",
-          "GraphQL.Server.Core": "5.1.0",
+          "GraphQL.Server.Core": "5.0.2",
           "GraphQL.SystemReactive": "4.1.0",
           "Microsoft.Extensions.Logging": "3.1.0",
           "System.Threading.Tasks.Dataflow": "5.0.0"
@@ -147,7 +148,7 @@
           }
         }
       },
-      "GraphQL.Server.Ui.Playground/5.1.0": {
+      "GraphQL.Server.Ui.Playground/5.0.2": {
         "type": "package",
         "compile": {
           "lib/net5.0/GraphQL.Server.Ui.Playground.dll": {
@@ -181,19 +182,19 @@
           }
         }
       },
-      "GraphQL.SystemTextJson/5.1.0": {
+      "GraphQL.SystemTextJson/4.6.1": {
         "type": "package",
         "dependencies": {
-          "GraphQL": "5.1.0",
+          "GraphQL": "4.6.1",
           "System.Text.Json": "4.7.2"
         },
         "compile": {
-          "lib/net6.0/GraphQL.SystemTextJson.dll": {
+          "lib/netstandard2.1/GraphQL.SystemTextJson.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net6.0/GraphQL.SystemTextJson.dll": {
+          "lib/netstandard2.1/GraphQL.SystemTextJson.dll": {
             "related": ".xml"
           }
         }
@@ -1291,18 +1292,15 @@
     }
   },
   "libraries": {
-    "GraphQL/5.1.0": {
-      "sha512": "33Ezaj9kNpBKyDVJkE6hMSzJpnNbaHc0mDf14nnEd7ZJY33UYUhPBomscUuhNAlEdK5az7vIlHfa38GOMQbXyQ==",
+    "GraphQL/4.6.1": {
+      "sha512": "/mky7HM3ytJMdJ3Yalp9f7ovgPiVQslqjyiLTjto/G5wFRcDM+YQGW/JWWX3gsLIu69yi6prn5OlO+jita+s9g==",
       "type": "package",
-      "path": "graphql/5.1.0",
+      "path": "graphql/4.6.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "README.md",
-        "graphql.5.1.0.nupkg.sha512",
+        "graphql.4.6.1.nupkg.sha512",
         "graphql.nuspec",
-        "lib/net6.0/GraphQL.dll",
-        "lib/net6.0/GraphQL.xml",
         "lib/netstandard2.0/GraphQL.dll",
         "lib/netstandard2.0/GraphQL.xml",
         "lib/netstandard2.1/GraphQL.dll",
@@ -1310,22 +1308,19 @@
         "logo.64x64.png"
       ]
     },
-    "GraphQL-Parser/8.0.0": {
-      "sha512": "kbAEvS0u240X3eN+5zv2eEVKlYTUhW3OB3JmGvI0ZTfiikyQYbWpt3t25C3aykolZUo2WCxewveeCNP4BHXR9A==",
+    "GraphQL-Parser/7.2.0": {
+      "sha512": "38qDxnwdUHK5zkWL28UhkmytkSSwDvX+dBhOVN1USgpZg7E2PUVNixbyG8JKEuRw/vqnhBWhk4JwkqA6jvHaFA==",
       "type": "package",
-      "path": "graphql-parser/8.0.0",
+      "path": "graphql-parser/7.2.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "README.md",
-        "graphql-parser.8.0.0.nupkg.sha512",
+        "graphql-parser.7.2.0.nupkg.sha512",
         "graphql-parser.nuspec",
-        "lib/net6.0/GraphQLParser.dll",
-        "lib/net6.0/GraphQLParser.xml",
-        "lib/netstandard2.0/GraphQLParser.dll",
-        "lib/netstandard2.0/GraphQLParser.xml",
-        "lib/netstandard2.1/GraphQLParser.dll",
-        "lib/netstandard2.1/GraphQLParser.xml",
+        "lib/netstandard2.0/GraphQL-Parser.dll",
+        "lib/netstandard2.0/GraphQL-Parser.xml",
+        "lib/netstandard2.1/GraphQL-Parser.dll",
+        "lib/netstandard2.1/GraphQL-Parser.xml",
         "logo.64x64.png"
       ]
     },
@@ -1357,28 +1352,28 @@
         "logo.64x64.png"
       ]
     },
-    "GraphQL.Server.Core/5.1.0": {
-      "sha512": "SPL7OiJp8Nz7szJ9xeQKoSBAAW+nIJZ28Vhg7ZM6aveHsVf9qjhR3ubRybx8nFI/8tqmebcs5QTA6/cfcDmS1w==",
+    "GraphQL.Server.Core/5.0.2": {
+      "sha512": "aOhbJIRfoCD+L9aPTTv3Bgyfacem2jH9Vy90v21xE/sjqJv3GdyMmxzIdpMQnPjmAARnzYg4O27wyhRshXLhLA==",
       "type": "package",
-      "path": "graphql.server.core/5.1.0",
+      "path": "graphql.server.core/5.0.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "graphql.server.core.5.1.0.nupkg.sha512",
+        "graphql.server.core.5.0.2.nupkg.sha512",
         "graphql.server.core.nuspec",
         "lib/netstandard2.0/GraphQL.Server.Core.dll",
         "lib/netstandard2.0/GraphQL.Server.Core.xml",
         "logo.64x64.png"
       ]
     },
-    "GraphQL.Server.Transports.AspNetCore/5.1.0": {
-      "sha512": "23iN3JKD4q/tpUis22nGzq1gHs+JTDRZuWbEc5z8xuy2CSoOBZnYyvd/hNKIAZRd4KhdHSek5OOsbG40gP428Q==",
+    "GraphQL.Server.Transports.AspNetCore/5.0.2": {
+      "sha512": "g1XVtyWCGH/rjwsYWo4z9Tb9xqjb9u2J6y7fnqIy1Egsjbmk/athya4xe+t7e+k1xxLGjBrs+sOi8k/ji33FRA==",
       "type": "package",
-      "path": "graphql.server.transports.aspnetcore/5.1.0",
+      "path": "graphql.server.transports.aspnetcore/5.0.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "graphql.server.transports.aspnetcore.5.1.0.nupkg.sha512",
+        "graphql.server.transports.aspnetcore.5.0.2.nupkg.sha512",
         "graphql.server.transports.aspnetcore.nuspec",
         "lib/net5.0/GraphQL.Server.Transports.AspNetCore.dll",
         "lib/net5.0/GraphQL.Server.Transports.AspNetCore.xml",
@@ -1387,14 +1382,14 @@
         "logo.64x64.png"
       ]
     },
-    "GraphQL.Server.Transports.AspNetCore.SystemTextJson/5.1.0": {
-      "sha512": "KQnd8TN5+RkKtRDGe3yOmUZZlxGXsewIEtSNt9SJFbImVyqjZ2iCc6jGbnnvg0Vj7RWuxfmCjZSlu2pyCAXkPQ==",
+    "GraphQL.Server.Transports.AspNetCore.SystemTextJson/5.0.2": {
+      "sha512": "VJ4sQXh9SwUf+8b6IfuIQcRgh2EOQ3sixO8oPLbXznPHcygxlfyrleRyPRTxdYdy0N4upRMXQ1cFDlqvJ/Y/TQ==",
       "type": "package",
-      "path": "graphql.server.transports.aspnetcore.systemtextjson/5.1.0",
+      "path": "graphql.server.transports.aspnetcore.systemtextjson/5.0.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "graphql.server.transports.aspnetcore.systemtextjson.5.1.0.nupkg.sha512",
+        "graphql.server.transports.aspnetcore.systemtextjson.5.0.2.nupkg.sha512",
         "graphql.server.transports.aspnetcore.systemtextjson.nuspec",
         "lib/net5.0/GraphQL.Server.Transports.AspNetCore.SystemTextJson.dll",
         "lib/net5.0/GraphQL.Server.Transports.AspNetCore.SystemTextJson.xml",
@@ -1403,28 +1398,28 @@
         "logo.64x64.png"
       ]
     },
-    "GraphQL.Server.Transports.Subscriptions.Abstractions/5.1.0": {
-      "sha512": "VWaHxsp258qye2/uSpz4eVA8INHZqfG723zSVzIuHJm9Q+5sl/4a9+8SoyDi2Xka5ze3idto8pWxkRLP+ut2Gg==",
+    "GraphQL.Server.Transports.Subscriptions.Abstractions/5.0.2": {
+      "sha512": "8Q5WGx9iXeFjDohNL4NQtQufAPBJREgTpYu5Qyq4kvmKYNmlX8lcd5pRCT91OhuJ8+4sN6Elxukfm+Xa9cr46w==",
       "type": "package",
-      "path": "graphql.server.transports.subscriptions.abstractions/5.1.0",
+      "path": "graphql.server.transports.subscriptions.abstractions/5.0.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "graphql.server.transports.subscriptions.abstractions.5.1.0.nupkg.sha512",
+        "graphql.server.transports.subscriptions.abstractions.5.0.2.nupkg.sha512",
         "graphql.server.transports.subscriptions.abstractions.nuspec",
         "lib/netstandard2.0/GraphQL.Server.Transports.Subscriptions.Abstractions.dll",
         "lib/netstandard2.0/GraphQL.Server.Transports.Subscriptions.Abstractions.xml",
         "logo.64x64.png"
       ]
     },
-    "GraphQL.Server.Ui.Playground/5.1.0": {
-      "sha512": "2WnmZrh+X4dQ3X+D9IjZ5A64e4bUfAy+yONSTjU8U6doMEjlfJZ+MIq86Le3QIXOJYljEjF97mu6CQ5YKhTW6g==",
+    "GraphQL.Server.Ui.Playground/5.0.2": {
+      "sha512": "aB8tmkrki30li7wIcTga9R2Iuhnc/onlQkUwrcfJ5NAPzDkOe7EMhO1gjBiSWA5m8Hadh7YzC9q3K3IBJNdOMA==",
       "type": "package",
-      "path": "graphql.server.ui.playground/5.1.0",
+      "path": "graphql.server.ui.playground/5.0.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "graphql.server.ui.playground.5.1.0.nupkg.sha512",
+        "graphql.server.ui.playground.5.0.2.nupkg.sha512",
         "graphql.server.ui.playground.nuspec",
         "lib/net5.0/GraphQL.Server.Ui.Playground.dll",
         "lib/net5.0/GraphQL.Server.Ui.Playground.xml",
@@ -1447,20 +1442,15 @@
         "logo.64x64.png"
       ]
     },
-    "GraphQL.SystemTextJson/5.1.0": {
-      "sha512": "VLnWmak6v1dBiP4wJ1xED89kGHeyH47+ds9z30naOTC/Li3NgBpc1wTHYrY+ODfMjOOFG02C2PSaQvEaQwIWaw==",
+    "GraphQL.SystemTextJson/4.6.1": {
+      "sha512": "oG+0N7cdDHVGI2jIG7zvgrwhSkf042KzgZT2X1l8aIkuHqgqpi+IGzzbuorssKRMSnvaZ5ksL4loFi7VCNI8Xw==",
       "type": "package",
-      "path": "graphql.systemtextjson/5.1.0",
+      "path": "graphql.systemtextjson/4.6.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "README.md",
-        "graphql.systemtextjson.5.1.0.nupkg.sha512",
+        "graphql.systemtextjson.4.6.1.nupkg.sha512",
         "graphql.systemtextjson.nuspec",
-        "lib/net5.0/GraphQL.SystemTextJson.dll",
-        "lib/net5.0/GraphQL.SystemTextJson.xml",
-        "lib/net6.0/GraphQL.SystemTextJson.dll",
-        "lib/net6.0/GraphQL.SystemTextJson.xml",
         "lib/netstandard2.0/GraphQL.SystemTextJson.dll",
         "lib/netstandard2.0/GraphQL.SystemTextJson.xml",
         "lib/netstandard2.1/GraphQL.SystemTextJson.dll",
@@ -3317,11 +3307,11 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
-      "GraphQL.Server.Core >= 5.1.0",
-      "GraphQL.Server.Transports.AspNetCore >= 5.1.0",
-      "GraphQL.Server.Transports.AspNetCore.SystemTextJson >= 5.1.0",
-      "GraphQL.Server.Ui.Playground >= 5.1.0",
-      "GraphQL.SystemTextJson >= 5.1.0",
+      "GraphQL.Server.Core >= 5.0.2",
+      "GraphQL.Server.Transports.AspNetCore >= 5.0.2",
+      "GraphQL.Server.Transports.AspNetCore.SystemTextJson >= 5.0.2",
+      "GraphQL.Server.Ui.Playground >= 5.0.2",
+      "GraphQL.SystemTextJson >= 4.6.1",
       "Microsoft.AspNetCore.Mvc.NewtonsoftJson >= 6.0.13",
       "Microsoft.AspNetCore.Mvc.Versioning >= 5.1.0",
       "Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer >= 5.1.0",
@@ -3387,23 +3377,23 @@
         "dependencies": {
           "GraphQL.Server.Core": {
             "target": "Package",
-            "version": "[5.1.0, )"
+            "version": "[5.0.2, )"
           },
           "GraphQL.Server.Transports.AspNetCore": {
             "target": "Package",
-            "version": "[5.1.0, )"
+            "version": "[5.0.2, )"
           },
           "GraphQL.Server.Transports.AspNetCore.SystemTextJson": {
             "target": "Package",
-            "version": "[5.1.0, )"
+            "version": "[5.0.2, )"
           },
           "GraphQL.Server.Ui.Playground": {
             "target": "Package",
-            "version": "[5.1.0, )"
+            "version": "[5.0.2, )"
           },
           "GraphQL.SystemTextJson": {
             "target": "Package",
-            "version": "[5.1.0, )"
+            "version": "[4.6.1, )"
           },
           "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
             "target": "Package",

@@ -7,6 +7,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Newtonsoft.Json.Converters;
 using InventoryAPI.Configurations;
+using GraphQL.Server;
+using InventoryAPI.Schemas;
+using GraphQL.Server.Ui.Playground;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -66,6 +69,12 @@ builder.Services.AddCors(options =>
                             .AllowAnyHeader(); // allowing any header to be sent
                       });
 });
+
+builder.Services.AddScoped<InventorySchema>();
+builder.Services.AddGraphQL()
+               .AddSystemTextJson()
+               .AddGraphTypes(typeof(InventorySchema), ServiceLifetime.Scoped);
+
 var app = builder.Build();
 var apiVersionDescriptionProvider = app.Services.GetRequiredService<IApiVersionDescriptionProvider>();
 
@@ -89,4 +98,7 @@ app.UseAuthorization();
 
 app.MapControllers();
 app.UseSwagger();
+app.UseGraphQL<InventorySchema>();
+app.UseGraphQLPlayground(options: new PlaygroundOptions());
+
 app.Run();

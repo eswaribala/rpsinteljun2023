@@ -10,13 +10,13 @@ namespace InventoryAPI.Queries
 
             Name = "Categories";
             Field<ListGraphType<CategoryGLType>>(
-                 "All Categories",                 
+                 "AllCategories",                 
               resolve: context => categoryRepo.GetCategories()
 
                 ) ;
 
             Field<CategoryGLType>(
-                "Category ById",
+                "CategoryById",
                  arguments: new QueryArguments(new QueryArgument<LongGraphType>
                  { Name = "categoryId" }),
                 resolve: context => categoryRepo.GetCategoryById(context.GetArgument<long>("categoryId"))

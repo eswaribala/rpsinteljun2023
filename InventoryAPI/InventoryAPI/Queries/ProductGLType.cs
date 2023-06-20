@@ -1,4 +1,5 @@
-﻿using GraphQL.Types;
+﻿/*
+using GraphQL.Types;
 using InventoryAPI.Models;
 
 namespace InventoryAPI.Queries
@@ -20,3 +21,4 @@ namespace InventoryAPI.Queries
 
     }
 }
+*/
