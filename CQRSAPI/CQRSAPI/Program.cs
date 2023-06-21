@@ -1,4 +1,6 @@
+using CQRSAPI.Commands;
 using CQRSAPI.Contexts;
+using CQRSAPI.Events;
 using CQRSAPI.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -14,7 +16,9 @@ builder.Services.AddDbContext<CQRSContext>
                (configuration.GetConnectionString("SqliteConnection")));
 builder.Services.AddTransient<CartSqliteRepository>();
 builder.Services.AddTransient<CartMongoRepository>();
-
+builder.Services.AddTransient<AMQPEventPublisher>();
+builder.Services.AddSingleton<CartMessageListener>();
+builder.Services.AddScoped<ICommandHandler<Command>, CartCommandHandler>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
