@@ -11,10 +11,17 @@ using GraphQL.Server;
 using CategoryAPI.Schemas;
 using GraphQL.Server.Ui.Playground;
 using Microsoft.Data.SqlClient;
+using Steeltoe.Extensions.Configuration.ConfigServer;
+using Steeltoe.Discovery.Client;
+using Steeltoe.Extensions.Configuration;
+using Steeltoe.Common.Http.Discovery;
 
 var builder = WebApplication.CreateBuilder(args);
 
 ConfigurationManager configuration = builder.Configuration;
+
+builder.Configuration.AddConfigServer();
+
 // Add services to the container.
 
 //builder.Services.AddControllers();
@@ -28,7 +35,10 @@ builder.Services.AddControllers(options =>
     .AddXmlSerializerFormatters()
 
 .AddMvcOptions(options => options.OutputFormatters.Add(new CsvOutputFormatter()));
-
+builder.Services.AddDiscoveryClient(configuration);
+builder.Services.AddHttpClient("category",
+   client => client.BaseAddress = new Uri("http://categoryapi/"))
+      .AddServiceDiscovery();
 // Add services to the container.
 Dictionary<string, Object> data = new VaultConfiguration(configuration)
     .GetConfiguration().Result;
@@ -42,9 +52,9 @@ providerCs.Password = data["password"].ToString();
 var machineName = data["machinename"];
 var serverName = data["servername"];
 var datasource = machineName + "\\" + serverName;
-providerCs.DataSource = datasource;
+//providerCs.DataSource = datasource;
 //reading via config server
-//providerCs.DataSource = configuration["servername"];
+providerCs.DataSource = configuration["trainerservername"];
 
 //providerCs.UserID = CryptoService2.Decrypt(ConfigurationManager.
 //AppSettings["UserId"]);
@@ -135,7 +145,7 @@ app.UseGraphQL<CategorySchema>();
 app.UseGraphQLPlayground(options: new PlaygroundOptions());
 
 app.UseHttpsRedirection();
-//app.UseCors(policyName);
+app.UseCors(policyName);
 app.UseAuthorization();
 
 app.MapControllers();
