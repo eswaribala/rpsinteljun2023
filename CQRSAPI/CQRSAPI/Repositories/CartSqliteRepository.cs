@@ -1,6 +1,6 @@
 ﻿using CQRSAPI.Contexts;
 using CQRSAPI.Models;
-
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 namespace CQRSAPI.Repositories
 {
     public class CartSqliteRepository
@@ -13,7 +13,7 @@ namespace CQRSAPI.Repositories
         }
         public Cart Create(Cart Cart)
         {
-            Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry<Cart> entry =
+            EntityEntry<Cart> entry =
                 _CQRSContext.Carts.Add(Cart);
             _CQRSContext.SaveChanges();
             return entry.Entity;
