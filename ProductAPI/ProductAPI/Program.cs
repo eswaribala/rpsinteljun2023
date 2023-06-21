@@ -10,6 +10,7 @@ using ProductAPI.Configurations;
 using GraphQL.Server;
 using InventoryAPI.Schemas;
 using GraphQL.Server.Ui.Playground;
+using Steeltoe.Discovery.Client;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,7 +28,7 @@ builder.Services.AddControllers(options =>
     .AddXmlSerializerFormatters()
 
 .AddMvcOptions(options => options.OutputFormatters.Add(new CsvOutputFormatter()));
-
+builder.Services.AddDiscoveryClient(configuration);
 builder.Services.AddDbContext<ProductContext>(options =>
 options.UseSqlServer(configuration.
 GetConnectionString("ProdConn")));
