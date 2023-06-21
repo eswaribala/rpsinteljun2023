@@ -96,3 +96,7 @@ G:\Local disk\IntelJun2023\ProductAPI\ProductAPI\bin\Debug\net6.0\Steeltoe.Disco
 G:\Local disk\IntelJun2023\ProductAPI\ProductAPI\bin\Debug\net6.0\Steeltoe.Discovery.Eureka.dll
 G:\Local disk\IntelJun2023\ProductAPI\ProductAPI\bin\Debug\net6.0\Steeltoe.Extensions.Configuration.Abstractions.dll
 G:\Local disk\IntelJun2023\ProductAPI\ProductAPI\bin\Debug\net6.0\System.Reflection.MetadataLoadContext.dll
+G:\Local disk\IntelJun2023\ProductAPI\ProductAPI\bin\Debug\net6.0\Microsoft.Extensions.Http.Polly.dll
+G:\Local disk\IntelJun2023\ProductAPI\ProductAPI\bin\Debug\net6.0\Polly.dll
+G:\Local disk\IntelJun2023\ProductAPI\ProductAPI\bin\Debug\net6.0\Polly.Contrib.WaitAndRetry.dll
+G:\Local disk\IntelJun2023\ProductAPI\ProductAPI\bin\Debug\net6.0\Polly.Extensions.Http.dll

@@ -17,7 +17,7 @@ namespace CategoryAPI.Configurations
         public async Task<Dictionary<string,object>> GetConfiguration()
         {
             var rootKey = _configuration["Root_Token"];
-            var url = _configuration["Vault_Url"];
+            var url = _configuration["url"];
             // Initialize one of the several auth methods.
             IAuthMethodInfo authMethod = new TokenAuthMethodInfo(rootKey);
 

@@ -1,20 +1,30 @@
 ﻿using ProductAPI.Contexts;
 using ProductAPI.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Net.Http;
 
 namespace ProductAPI.Repositories
 {
     public class ProductRepo : IProductRepo
     {
         private ProductContext _context;
+        private readonly IHttpClientFactory _httpClientFactory;
 
-        public ProductRepo(ProductContext context) { 
+        public ProductRepo(ProductContext context,IHttpClientFactory httpClientFactory) { 
          _context = context;
+        _httpClientFactory = httpClientFactory;
+
         }
         public async Task<Product> AddProduct(Product Product, long CategoryId)
         {
-            
-                Product.CategoryId= CategoryId;
+            //inter service communication
+            var httpClient = _httpClientFactory.CreateClient("CategoryApiClient");
+
+            var response = httpClient.GetAsync("api/v1/Categories/"+CategoryId).Result;
+            var Data =response.Content.ReadAsStringAsync().Result.ToString();
+            Console.WriteLine(Data);
+
+            Product.CategoryId= CategoryId;
                 var productResult = await this._context.Products.AddAsync(Product);
                 await this._context.SaveChangesAsync();
                 return productResult.Entity;

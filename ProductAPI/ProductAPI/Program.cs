@@ -11,6 +11,7 @@ using GraphQL.Server;
 using InventoryAPI.Schemas;
 using GraphQL.Server.Ui.Playground;
 using Steeltoe.Discovery.Client;
+using Polly;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -82,6 +83,43 @@ builder.Services.AddGraphQL()
                .AddSystemTextJson()
                .AddGraphTypes(typeof(ProductSchema), ServiceLifetime.Scoped);
 
+//Retry Policy
+
+builder.Services.AddHttpClient("CategoryApiClient", c =>
+{
+    c.BaseAddress = new Uri("http://localhost:6001/");
+}).AddTransientHttpErrorPolicy(policy => policy.WaitAndRetryAsync(new[]
+{
+                TimeSpan.FromSeconds(1),
+                TimeSpan.FromSeconds(5),
+                TimeSpan.FromSeconds(15),
+                 TimeSpan.FromSeconds(15)
+            }));
+
+
+//Circuit Breaker Policy
+//circuit opens up after 2 consecutive trials
+
+//builder.Services.AddHttpClient("cartApiClient", c => {
+//    c.BaseAddress =
+//new Uri("http://localhost:5097");
+//})
+//.AddTransientHttpErrorPolicy(p => p.CircuitBreakerAsync(2, TimeSpan.FromMinutes(2)));
+
+
+//Bulkhead Policy
+
+builder.Services.AddSingleton<Polly.Bulkhead.AsyncBulkheadPolicy>((x) =>
+{
+    var policy = Policy.BulkheadAsync(
+        maxParallelization: 5,
+        maxQueuingActions: 5);
+
+    return policy;
+});
+
+
+
 var app = builder.Build();
 var apiVersionDescriptionProvider = app.Services.GetRequiredService<IApiVersionDescriptionProvider>();
 
@@ -104,7 +142,7 @@ app.UseGraphQL<ProductSchema>();
 app.UseGraphQLPlayground(options: new PlaygroundOptions());
 
 app.UseHttpsRedirection();
-//app.UseCors(policyName);
+app.UseCors(policyName);
 app.UseAuthorization();
 
 app.MapControllers();
