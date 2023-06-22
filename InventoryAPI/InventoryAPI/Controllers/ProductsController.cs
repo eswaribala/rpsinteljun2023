@@ -18,10 +18,11 @@ namespace InventoryAPI.Controllers
     public class ProductsController : ControllerBase
     {
         private IProductRepo productRepo;
-
-        public ProductsController(IProductRepo productRepo)
+        private readonly ILogger<ProductsController> _logger;
+        public ProductsController(IProductRepo productRepo,ILogger<ProductsController> logger)
         {
             this.productRepo = productRepo;
+            this._logger = logger;
         }
 
 
@@ -30,6 +31,8 @@ namespace InventoryAPI.Controllers
       //  [MapToApiVersion("2.0")]
         public async Task<IEnumerable<Product>> Get()
         {
+            this._logger.LogInformation("Accessing Products" + DateTime.Now);
+
             return await productRepo.GetProducts();
         }
 
