@@ -18,7 +18,7 @@ namespace ShippingAPI.Repositories
             var database = mongoClient.GetDatabase(_configuration["DatabaseName"]);
 
             _MongoCollection = database.GetCollection<ProductBSon>(
-             _configuration["Products"]);
+             _configuration["ProductsCollectionName"]);
           
            
         }
