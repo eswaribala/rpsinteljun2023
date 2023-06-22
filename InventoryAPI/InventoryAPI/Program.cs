@@ -152,7 +152,7 @@ app.UseGraphQLPlayground(options: new PlaygroundOptions());
 app.UseHttpsRedirection();
 app.UseCors(policyName);
 
-app.UseAuthorization();
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
