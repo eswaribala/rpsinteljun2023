@@ -5,7 +5,10 @@ using System.Text.Json;
 
 namespace InventoryAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [ApiVersion("1.0")]
+    [ApiVersion("1.1")]
+    [ApiVersion("2.0")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
     public class ProductPublisherController : ControllerBase
     {
