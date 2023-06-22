@@ -10,6 +10,10 @@ using InventoryAPI.Configurations;
 using GraphQL.Server;
 using InventoryAPI.Schemas;
 using GraphQL.Server.Ui.Playground;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,6 +35,11 @@ builder.Services.AddControllers(options =>
 builder.Services.AddDbContext<InventoryContext>(options =>
 options.UseSqlServer(configuration.
 GetConnectionString("InvConn")));
+
+builder.Services.AddDbContext<InventoryIdentityContext>(options =>
+options.UseSqlServer(configuration.
+GetConnectionString("IdentityInvConn")));
+
 builder.Services.AddTransient<ICategoryRepo, CategoryRepo>();
 builder.Services.AddTransient<IProductRepo, ProductRepo>(); 
 
@@ -82,6 +91,42 @@ builder.Services.AddGraphQL()
                .AddSystemTextJson()
                .AddGraphTypes(typeof(InventorySchema), ServiceLifetime.Scoped);
 //builder.Services.AddTransient<IProductPublisher, ProductPublisher>();
+
+// For Identity
+builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+    .AddEntityFrameworkStores<InventoryIdentityContext>()
+    .AddDefaultTokenProviders();
+
+//Dictionary<string, Object> secretData = new VaultConfiguration(configuration)
+//             .GetSecret().Result;
+var SecretData = configuration["Secret"];
+
+// Adding Authentication
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+// Add services to the container.
+
+// Adding Jwt Bearer
+.AddJwtBearer(options =>
+{
+    options.SaveToken = true;
+    options.RequireHttpsMetadata = false;
+    options.TokenValidationParameters = new TokenValidationParameters()
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidAudience = configuration["JWT:ValidAudience"],
+        ValidIssuer = configuration["JWT:ValidIssuer"],
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(SecretData))
+    };
+});
+
+
+
 
 var app = builder.Build();
 var apiVersionDescriptionProvider = app.Services.GetRequiredService<IApiVersionDescriptionProvider>();
