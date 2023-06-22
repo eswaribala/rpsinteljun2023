@@ -14,5 +14,10 @@ namespace ShippingAPI.Models
 
         public string? SKU { get; set; }
 
+        public long CategoryId { get; set; }
+
+        public Category? Category { get; set; }
+
+
     }
 }

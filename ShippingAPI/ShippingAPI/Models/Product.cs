@@ -11,6 +11,10 @@ namespace InventoryAPI.Models
         public ProductDescription? productDescription { get; set; }
        
         public string? SKU { get; set; }
+
+        public long CategoryId { get; set; }
+
+        public Category? Category { get; set; }
  
 
 

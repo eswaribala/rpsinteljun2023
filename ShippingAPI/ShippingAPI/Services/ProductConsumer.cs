@@ -64,8 +64,9 @@ namespace ShippingAPI.Services
                             var cr = c.Consume(cts.Token);
                             Console.WriteLine($"Consumed message '{cr.Value}' at: '{cr.TopicPartitionOffset}'.");
                             response = $"Consumed message '{cr.Value}' at: '{cr.TopicPartitionOffset}'.";
-                           // var result = JsonConvert.DeserializeObject<ProductBSon>(cr.Value);
-                           // _ProductRepo.AddProduct(result);
+                            var result = JsonConvert.DeserializeObject<List<ProductBSon>>(cr.Value);
+                            foreach(var product in result)
+                                _ProductRepo.AddProduct(product);
                         }
                         catch (ConsumeException e)
                         {
