@@ -81,7 +81,7 @@ builder.Services.AddScoped<InventorySchema>();
 builder.Services.AddGraphQL()
                .AddSystemTextJson()
                .AddGraphTypes(typeof(InventorySchema), ServiceLifetime.Scoped);
-builder.Services.AddTransient<IProductPublisher, ProductPublisher>();
+//builder.Services.AddTransient<IProductPublisher, ProductPublisher>();
 
 var app = builder.Build();
 var apiVersionDescriptionProvider = app.Services.GetRequiredService<IApiVersionDescriptionProvider>();
