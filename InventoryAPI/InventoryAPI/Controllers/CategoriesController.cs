@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace InventoryAPI.Controllers
 {
     //[Route("api/[controller]")]
-    [Authorize(Roles = Roles.Admin)]
+   
     [ApiVersion("1.0")]
     [ApiVersion("1.1")]
     [ApiVersion("2.0")]
@@ -28,8 +28,9 @@ namespace InventoryAPI.Controllers
             this.categoryRepo = categoryRepo;
         }
 
-       
 
+
+        [Authorize(Roles = Roles.Admin)]
         // GET: api/<CategoryController>
         [HttpGet]
        // [MapToApiVersion("2.0")]
@@ -43,7 +44,7 @@ namespace InventoryAPI.Controllers
         {
             return await categoryRepo.GetCategoryById(Id);
         }
-
+      
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] Category Category)
         {
