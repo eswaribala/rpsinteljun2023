@@ -150,7 +150,9 @@ app.UseGraphQL<InventorySchema>();
 app.UseGraphQLPlayground(options: new PlaygroundOptions());
 
 app.UseHttpsRedirection();
-//app.UseCors(policyName);
+app.UseCors(policyName);
+
+app.UseAuthorization();
 app.UseAuthorization();
 
 app.MapControllers();
