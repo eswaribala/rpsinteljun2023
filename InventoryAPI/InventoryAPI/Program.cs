@@ -15,9 +15,11 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.OpenApi.Models;
+using Serilog;
+using Serilog.Sinks.Elasticsearch;
 
 var builder = WebApplication.CreateBuilder(args);
-
+var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
 ConfigurationManager configuration = builder.Configuration;
 // Add services to the container.
 
@@ -49,6 +51,7 @@ builder.Services.AddTransient<IProductRepo, ProductRepo>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 //builder.Services.AddSwaggerGen();
+//swagger authorize
 builder.Services.AddSwaggerGen(opt =>
 {
     opt.SwaggerDoc("v1", new OpenApiInfo { Title = "MyAPI", Version = "v1" });
@@ -157,6 +160,25 @@ builder.Services.AddAuthentication(options =>
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(SecretData))
     };
 });
+
+//elastic log
+Log.Logger = new LoggerConfiguration()
+    .Enrich.FromLogContext()
+
+    .WriteTo.Debug()
+    .WriteTo.Console()
+    .WriteTo.Elasticsearch(new ElasticsearchSinkOptions(new
+        Uri(configuration["ElasticConfiguration:Uri"]))
+    {
+        AutoRegisterTemplate = true,
+        IndexFormat = $"InventoryIndex-{DateTime.UtcNow:yyyy-MM}"
+    })
+    .Enrich.WithProperty("Environment", environment)
+    .Enrich.WithProperty("ApplicationName", "Inventory")
+    .ReadFrom.Configuration(configuration)
+    .CreateLogger();
+
+builder.Host.UseSerilog();
 
 
 
