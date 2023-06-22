@@ -48,6 +48,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Confluent.Kafka": {
+              "target": "Package",
+              "version": "[1.9.2, )"
+            },
             "GraphQL.Server.Core": {
               "target": "Package",
               "version": "[5.0.2, )"
