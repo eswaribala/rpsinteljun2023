@@ -5,7 +5,7 @@ namespace InventoryAPI.Contexts
 {
     public class InventoryContext:DbContext
     {
-        public InventoryContext(DbContextOptions dbContextOptions) : base(dbContextOptions)
+        public InventoryContext(DbContextOptions<InventoryContext> dbContextOptions) : base(dbContextOptions)
         {
             this.Database.EnsureCreated();
         }

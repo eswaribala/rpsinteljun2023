@@ -1,5 +1,7 @@
 ﻿using InventoryAPI.Models;
 using InventoryAPI.Repositories;
+using InventoryService.Auth;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -7,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace InventoryAPI.Controllers
 {
     //[Route("api/[controller]")]
+    [Authorize(Roles = Roles.Admin)]
     [ApiVersion("1.0")]
     [ApiVersion("1.1")]
     [ApiVersion("2.0")]
