@@ -20,3 +20,19 @@ services:
       - '1406:1433'  
     expose:  
       - 1433 
+  prometheus:
+    image: prom/prometheus
+    restart: always
+    ports:
+      - 9090:9090
+    volumes:
+      - ./prometheus.yml:/etc/prometheus43543/prometheus.yml:ro
+    
+  grafana: 
+    image: grafana/grafana
+    #command:
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=Password
+    restart: always
+    ports:
+      - 3000:3000 
