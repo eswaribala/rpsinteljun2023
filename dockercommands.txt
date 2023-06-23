@@ -1,3 +1,7 @@
 docker exec -it dockercompose3843168308499983372_sqlserverinventoryservice_1 /opt/mssql-tools/bin/sqlcmd -U sa -P Vignesh@95
 select name from sys.databases;
 GO
+
+
+docker tag inventoryapi:dev eswaribala/rpsinteljun2023:invappv1
+docker push eswaribala/rpsinteljun2023:invappv1
