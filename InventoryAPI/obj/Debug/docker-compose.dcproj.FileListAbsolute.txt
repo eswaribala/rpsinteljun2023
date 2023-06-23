@@ -46,3 +46,5 @@ G:\Local disk\IntelJun2023\InventoryAPI\bin\Debug\System.Reactive.xml
 G:\Local disk\IntelJun2023\InventoryAPI\obj\Debug\docker-compose.dcproj.AssemblyReference.cache
 G:\Local disk\IntelJun2023\InventoryAPI\obj\Debug\docker-compose.dcproj.CoreCompileInputs.cache
 G:\Local disk\IntelJun2023\InventoryAPI\obj\Debug\docker-compose.dcproj.CopyComplete
+G:\Local disk\IntelJun2023\InventoryAPI\bin\Debug\Prometheus.AspNetCore.dll
+G:\Local disk\IntelJun2023\InventoryAPI\bin\Debug\Prometheus.NetStandard.dll
