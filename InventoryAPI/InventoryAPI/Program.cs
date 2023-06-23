@@ -162,23 +162,25 @@ builder.Services.AddAuthentication(options =>
 });
 
 //elastic log
-Log.Logger = new LoggerConfiguration()
-    .Enrich.FromLogContext()
+//Log.Logger = new LoggerConfiguration()
+//    .Enrich.FromLogContext()
 
-    .WriteTo.Debug()
-    .WriteTo.Console()
-    .WriteTo.Elasticsearch(new ElasticsearchSinkOptions(new
-        Uri(configuration["ElasticConfiguration:Uri"]))
-    {
-        AutoRegisterTemplate = true,
-        IndexFormat = $"InventoryIndex-{DateTime.UtcNow:yyyy-MM}"
-    })
-    .Enrich.WithProperty("Environment", environment)
-    .Enrich.WithProperty("ApplicationName", "Inventory")
-    .ReadFrom.Configuration(configuration)
-    .CreateLogger();
+//    .WriteTo.Debug()
+//    .WriteTo.Console()
+    
+//    .WriteTo.Elasticsearch(new ElasticsearchSinkOptions(new
+//        Uri(configuration["ElasticConfiguration:Uri"]))
+//    {
+//        AutoRegisterTemplate = true,
+//        IndexFormat = $"InventoryIndex-{DateTime.UtcNow:yyyy-MM}"
+//    })
+//    .Enrich.WithProperty("Environment", environment)
+//    .Enrich.WithProperty("ApplicationName", "Inventory")
+//    .Enrich.WithProperty("Data","Product Details")
+//    .ReadFrom.Configuration(configuration)
+//    .CreateLogger();
 
-builder.Host.UseSerilog();
+//builder.Host.UseSerilog();
 
 
 

@@ -3,6 +3,7 @@ using InventoryAPI.Repositories;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace InventoryAPI.Controllers
 {
@@ -32,8 +33,15 @@ namespace InventoryAPI.Controllers
         public async Task<IEnumerable<Product>> Get()
         {
             this._logger.LogInformation("Accessing Products" + DateTime.Now);
+            var products = await productRepo.GetProducts();
+            foreach(var product in products)
+            {
+                this._logger.LogInformation(product.ProductName);
+                this._logger.LogInformation(product.ToString());
 
-            return await productRepo.GetProducts();
+            }
+           
+            return products;
         }
 
         [HttpGet("{Id}")]
